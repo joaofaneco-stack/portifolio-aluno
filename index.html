@@ -5,26 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Meu Projeto no GitHub</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Login - Meu Projeto</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Bem-vindo ao meu projeto!</h1>
-    </header>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+        <div id="error-message" class="error-message"></div>
+    </div>
 
-    <main>
-        <section>
-            <p>Este é um projeto básico de exemplo para demonstrar como fazer um site simples usando HTML.</p>
-        </section>
-        <section>
-            <h2>Imagem de Exemplo</h2>
-            <img src="img/imagem.jpg" alt="Imagem de exemplo" width="300">
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Meu Projeto no GitHub</p>
-    </footer>
+    <script src="login.js"></script>
 </body>
 </html>
