@@ -5,28 +5,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login - João</title>
+    <title>Perfil de João | Engenharia de Software</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="login-container">
-        <h1>Login</h1>
-        <form id="loginForm">
-            <div class="input-group">
-                <label for="username">Usuário:</label>
-                <input type="text" id="username" name="username" required>
+    <header>
+        <div class="navbar">
+            <h1>João - Engenharia de Software</h1>
+            <nav>
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="sobre" class="perfil">
+        <div class="perfil-imagem">
+            <img src="https://via.placeholder.com/150" alt="Foto de João" id="foto-perfil">
+        </div>
+        <div class="perfil-info">
+            <h2>Olá, eu sou João!</h2>
+            <p>Sou um engenheiro de software apaixonado por desenvolvimento de sistemas e sempre buscando melhorar minhas habilidades.</p>
+            <p>Atualmente estou focado em tecnologias como JavaScript, React, Node.js e Python. Sou dedicado, autodidata e gosto de trabalhar com desafios complexos.</p>
+            <div class="tags">
+                <span>#fechadocomcomputaria</span>
+                <span>#engenhariadesoftware</span>
             </div>
-            <div class="input-group">
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">Entrar</button>
-        </form>
-        <div id="error-message" class="error-message"></div>
-        <footer>
-            <p>Desenvolvido por João</p>
-        </footer>
-    </div>
-    <script src="login.js"></script>
+        </div>
+    </section>
+
+    <section id="habilidades" class="habilidades">
+        <h2>Minhas Habilidades</h2>
+        <ul>
+            <li><span class="habilidade">JavaScript</span></li>
+            <li><span class="habilidade">React</span></li>
+            <li><span class="habilidade">Node.js</span></li>
+            <li><span class="habilidade">Python</span></li>
+            <li><span class="habilidade">HTML & CSS</span></li>
+            <li><span class="habilidade">Banco de Dados (SQL, NoSQL)</span></li>
+        </ul>
+    </section>
+
+    <section id="contato" class="contato">
+        <h2>Contato</h2>
+        <p>Você pode entrar em contato comigo por meio das redes sociais abaixo:</p>
+        <div class="redes-sociais">
+            <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+            <a href="https://github.com" target="_blank">GitHub</a>
+            <a href="mailto:joao@example.com">Email</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Desenvolvido por João</p>
+    </footer>
+
 </body>
 </html>
