@@ -8,29 +8,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-
     <style>
         *{
             margin:0;
             padding:0;
             box-sizing:border-box;
         }
-
         :root{
-            --bg: #030708;
-            --bg-card: #090f11;
-            --primary: #00FFA3; /* Verde Neon */
-            --secondary: #BC00FF; /* Violeta Spark */
-            --white: #EEF5F7;
-            --muted: #6C7D82;
-            --border: rgba(0, 255, 163, 0.15);
-            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --bg: #06020f; /* Fundo roxo profundo */
+            --bg-card: #0e0622; /* Cards roxos escuros */
+            --primary: #00FF66; /* Verde Neon */
+            --secondary: #00E5FF; /* Azul Ciano */
+            --accent: #9E00FF; /* Roxo Neon */
+            --white: #E6F9FF; /* Branco azulado */
+            --muted: #7A89A4; /* Texto secundário azul/cinza */
+            --border: rgba(0, 255, 102, 0.15);
+            --gradient: linear-gradient(135deg, var(--secondary), var(--primary));
         }
-
         html{
             scroll-behavior:smooth;
         }
-
         body{
             font-family: 'Plus Jakarta Sans', sans-serif;
             background: var(--bg);
@@ -38,7 +35,6 @@
             overflow-x:hidden;
             line-height: 1.6;
         }
-
         /* Canvas de Partículas */
         #particles-canvas {
             position: fixed;
@@ -49,19 +45,17 @@
             z-index: -1;
             pointer-events: none;
         }
-
         /* Fundo com Grid Cibernético */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             background: 
-                linear-gradient(rgba(0, 255, 163, 0.01) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 163, 0.01) 1px, transparent 1px);
+                linear-gradient(rgba(0, 229, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.01) 1px, transparent 1px);
             background-size: 40px 40px;
             z-index: -2;
         }
-
         /* Barra de Progresso */
         #progress{
             position:fixed;
@@ -72,7 +66,6 @@
             background: var(--gradient);
             z-index:10000;
         }
-
         /* NAVBAR INTERATIVA */
         nav {
             position: fixed;
@@ -83,13 +76,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(3, 7, 8, 0.75);
+            background: rgba(6, 2, 15, 0.75);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 255, 163, 0.1);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.1);
             z-index: 999;
         }
-
         .logo{
             font-family: 'Syncopate', sans-serif;
             font-weight:700;
@@ -102,13 +94,11 @@
         .logo span {
             color: var(--primary);
         }
-
         .nav-container {
             display: flex;
             align-items: center;
             position: relative;
         }
-
         .menu {
             display: flex;
             gap: 10px;
@@ -119,12 +109,10 @@
             border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-
         .menu li {
             position: relative;
             z-index: 2;
         }
-
         .menu a {
             color: var(--muted);
             text-decoration: none;
@@ -137,14 +125,13 @@
             border-radius: 20px;
             transition: color 0.3s ease;
         }
-
         /* Indicador Dinâmico */
         .nav-indicator {
             position: absolute;
             height: calc(100% - 12px);
-            background: rgba(0, 255, 163, 0.12);
+            background: rgba(0, 255, 102, 0.1);
             border: 1px solid var(--primary);
-            box-shadow: 0 0 15px rgba(0, 255, 163, 0.2);
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
             border-radius: 20px;
             z-index: 1;
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -153,24 +140,20 @@
             left: 0;
             opacity: 0;
         }
-
         .nav-indicator.clicked-state {
-            background: rgba(188, 0, 255, 0.2);
+            background: rgba(0, 229, 255, 0.15);
             border-color: var(--secondary);
-            box-shadow: 0 0 25px rgba(188, 0, 255, 0.5);
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
             animation: pulseClick 0.4s ease-out;
         }
-
         @keyframes pulseClick {
             0% { transform: scale(0.95); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-
         .menu a:hover { color: var(--primary); }
-        .menu a.active { color: var(--white); text-shadow: 0 0 8px rgba(0, 255, 163, 0.5); }
-        .menu a.active-click { color: #ff00ff; text-shadow: 0 0 8px rgba(188, 0, 255, 0.6); }
-
+        .menu a.active { color: var(--white); text-shadow: 0 0 8px rgba(0, 255, 102, 0.5); }
+        .menu a.active-click { color: var(--secondary); text-shadow: 0 0 8px rgba(0, 229, 255, 0.6); }
         /* Menu Hamburguer */
         .menu-toggle {
             display: none;
@@ -181,14 +164,12 @@
             border: none;
             z-index: 1000;
         }
-
         .menu-toggle span {
             width: 28px;
             height: 2px;
             background-color: var(--white);
             transition: 0.3s;
         }
-
         /* HERO SECTION */
         .hero{
             min-height:100vh;
@@ -196,12 +177,10 @@
             align-items:center;
             padding: 120px 8% 60px 8%;
         }
-
         .hero-box{
             max-width: 800px;
             text-align: left;
         }
-
         .hero small{
             color: var(--secondary);
             font-weight: 700;
@@ -211,7 +190,6 @@
             display: block;
             margin-bottom: 15px;
         }
-
         .hero h1{
             font-family: 'Syncopate', sans-serif;
             font-size: clamp(2.3rem, 5.5vw, 4.2rem);
@@ -219,7 +197,6 @@
             margin-bottom: 25px;
             letter-spacing: -2px;
         }
-
         /* Efeito de Cursor Piscando */
         .txt-type {
             background: var(--gradient);
@@ -229,25 +206,21 @@
             padding-right: 5px;
             animation: blink 0.75s step-end infinite;
         }
-
         @keyframes blink {
             from, to { border-color: transparent }
             50% { border-color: var(--primary); }
         }
-
         .hero p{
             font-size: 1.15rem;
             color: var(--muted);
             margin-bottom: 40px;
             max-width: 600px;
         }
-
         .buttons{
             display:flex;
             gap:20px;
             flex-wrap:wrap;
         }
-
         .btn{
             padding:16px 35px;
             border-radius:4px;
@@ -258,77 +231,68 @@
             letter-spacing: 1px;
             transition: .4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .primary{
             background: var(--primary);
-            color: #030708;
-            box-shadow: 0 0 30px rgba(0, 255, 163, 0.2);
+            color: #06020f;
+            font-weight: 800;
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.2);
         }
-
         .secondary{
-            border: 1px solid var(--border);
+            border: 1px solid rgba(0, 229, 255, 0.3);
             color: var(--white);
         }
-
         .btn:hover{
             transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0, 255, 163, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 255, 102, 0.3);
         }
         
         .secondary:hover {
-            background: rgba(0, 255, 163, 0.05);
-            border-color: var(--primary);
+            background: rgba(0, 229, 255, 0.05);
+            border-color: var(--secondary);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
         }
-
-        /* ANIMAÇÃO DE SCROLL (REVEAL CONFIGURADO VIA JS) */
+        /* ANIMAÇÃO DE SCROLL */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-
         /* SEÇÕES */
         section{
             padding: 100px 8%;
             max-width: 1400px;
             margin: auto;
         }
-
         .section-tag{
-            color: var(--primary);
+            color: var(--secondary);
             letter-spacing: 3px;
             text-transform: uppercase;
             font-size: .8rem;
             font-weight: 700;
             margin-bottom: 15px;
         }
-
         h2{
             font-family: 'Syncopate', sans-serif;
             font-size: clamp(1.6rem, 3.5vw, 2.5rem);
             margin-bottom: 25px;
             letter-spacing: -1px;
         }
-
         .lead{
             color: var(--muted);
             font-size: 1.15rem;
             max-width: 750px;
             margin-bottom: 60px;
         }
-
         /* CARDS */
         .grid{
             display:grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-
         .card{
             background: var(--bg-card);
             padding: 40px;
@@ -338,7 +302,6 @@
             overflow: hidden;
             transition: .4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .card::before {
             content: '';
             position: absolute;
@@ -347,50 +310,42 @@
             opacity: 0;
             transition: 0.3s;
         }
-
         .card:hover{
             transform: translateY(-8px);
-            border-color: rgba(0, 255, 163, 0.3);
+            border-color: rgba(0, 229, 255, 0.3);
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
-
         .card:hover::before { opacity: 1; }
-
         .card-icon {
             font-size: 2rem;
             display: block;
             margin-bottom: 25px;
             color: var(--primary);
         }
-
         .card h3{
             font-size: 1.3rem;
             margin-bottom: 15px;
             font-weight: 600;
         }
-
         .card p{
             color: var(--muted);
             font-size: 0.95rem;
         }
-
-        /* NOVO: SIMULADOR INTERATIVO DE PROMPT */
+        /* SIMULADOR INTERATIVO DE PROMPT */
         .simulator-box {
             background: var(--bg-card);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(0, 255, 102, 0.2);
             border-radius: 12px;
             padding: 30px;
             max-width: 800px;
             margin: 0 auto;
             box-shadow: 0 20px 50px rgba(0,0,0,0.4);
         }
-
         .sim-input-group {
             display: flex;
             gap: 15px;
             margin-bottom: 25px;
         }
-
         .sim-input {
             flex: 1;
             background: rgba(0,0,0,0.4);
@@ -403,15 +358,13 @@
             outline: none;
             transition: 0.3s;
         }
-
         .sim-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 15px rgba(0,255,163,0.1);
+            border-color: var(--secondary);
+            box-shadow: 0 0 15px rgba(0,229,255,0.1);
         }
-
         .sim-btn {
             background: var(--primary);
-            color: #030708;
+            color: #06020f;
             border: none;
             padding: 0 25px;
             border-radius: 6px;
@@ -422,12 +375,10 @@
             letter-spacing: 1px;
             transition: 0.3s;
         }
-
         .sim-btn:hover {
             box-shadow: 0 0 20px var(--primary);
             transform: translateY(-2px);
         }
-
         .sim-output {
             background: rgba(0,0,0,0.2);
             border-radius: 6px;
@@ -437,7 +388,6 @@
             font-size: 0.95rem;
             color: var(--muted);
         }
-
         /* TIMELINE HISTÓRIA */
         .history-flow {
             display: flex;
@@ -460,7 +410,6 @@
             color: var(--primary);
             min-width: 100px;
         }
-
         /* FAQ */
         details {
             background: var(--bg-card);
@@ -471,9 +420,7 @@
             cursor: pointer;
             transition: 0.3s;
         }
-
-        details[open] { border-color: rgba(0, 255, 163, 0.2); }
-
+        details[open] { border-color: rgba(0, 229, 255, 0.2); }
         summary {
             font-size: 1.1rem;
             font-weight: 600;
@@ -482,10 +429,33 @@
             justify-content: space-between;
             align-items: center;
         }
-
         summary::after { content: '+'; color: var(--primary); font-size: 1.4rem; }
         details[open] summary::after { content: '−'; }
-
+        /* SEÇÃO FINAL DA FOTO DE DEUS */
+        .divine-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 100px 8%;
+            border-top: 1px solid rgba(0, 229, 255, 0.1);
+            background: linear-gradient(to bottom, transparent, rgba(158, 0, 255, 0.03));
+        }
+        .divine-image-container {
+            max-width: 650px;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 229, 255, 0.2);
+            border: 1px solid var(--secondary);
+            margin-top: 30px;
+        }
+        .divine-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: saturate(1.2) contrast(1.1);
+        }
         /* VOLTAR AO TOPO */
         #topBtn{
             position:fixed;
@@ -498,34 +468,57 @@
             font-size:18px;
             cursor:pointer;
             background: var(--primary);
-            color: #030708;
+            color: #06020f;
             display:none;
             z-index:9999;
             transition:.3s;
             font-weight: bold;
         }
-
         #topBtn:hover{ transform: translateY(-5px); box-shadow: 0 0 20px var(--primary); }
-
+        /* BOTÃO FLUTUANTE DO WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            background-color: #25d366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
+        }
+        .whatsapp-icon-svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
         /* FOOTER */
         footer{
             margin-top: 120px;
             padding: 80px 8%;
-            background: #010405;
+            background: #04010a;
             border-top: 1px solid rgba(255,255,255,0.02);
         }
-
         footer h3{
             font-family: 'Syncopate', sans-serif;
             font-size: 1.5rem;
             margin-bottom: 20px;
-            color: var(--primary);
+            color: var(--secondary);
         }
-
         footer p{ color: var(--muted); margin-bottom: 25px; }
-
         footer .social{ display:flex; gap:15px; flex-wrap:wrap; }
-
         footer .social span{
             background: var(--bg-card);
             padding: 10px 20px;
@@ -533,7 +526,6 @@
             font-size: 0.85rem;
             border: 1px solid rgba(255,255,255,0.05);
         }
-
         /* RESPONSIVIDADE */
         @media(max-width: 992px) {
             .menu-toggle { display: flex; }
@@ -545,21 +537,19 @@
                 width: 75%;
                 max-width: 320px;
                 height: 100vh;
-                background: #04090b;
+                background: #090314;
                 flex-direction: column;
                 justify-content: center;
                 gap: 20px;
                 padding: 40px;
                 border-radius: 0;
                 border: none;
-                border-left: 1px solid rgba(0, 255, 163, 0.1);
+                border-left: 1px solid rgba(0, 229, 255, 0.1);
                 transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             }
-
             .menu.active { right: 0; }
             .nav-indicator { display: none; }
             .menu a { width: 100%; text-align: center; }
-
             .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); background-color: var(--primary); }
             .menu-toggle.active span:nth-child(2) { opacity: 0; }
             .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background-color: var(--primary); }
@@ -567,14 +557,18 @@
             .history-item { flex-direction: column; gap: 10px; }
             .sim-input-group { flex-direction: column; }
             .sim-btn { padding: 15px; }
+            
+            .whatsapp-float { bottom: 20px; left: 20px; width: 50px; height: 50px; }
+            #topBtn { bottom: 20px; right: 20px; width: 45px; height: 45px; }
         }
-    </style>
-</head>
-<body>
-
+    </style></head><body>
     <canvas id="particles-canvas"></canvas>
     <div id="progress"></div>
-
+    <a href="https://wa.me/5544984226741?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20IA%20Evolution." class="whatsapp-float" target="_blank" aria-label="Contato via WhatsApp">
+        <svg class="whatsapp-icon-svg" viewBox="0 0 448 512">
+            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        </svg>
+    </a>
     <nav>
         <a href="#" class="logo">IA <span>//</span> EVOLUTION</a>
         <div class="nav-container">
@@ -593,7 +587,6 @@
             </ul>
         </div>
     </nav>
-
     <section class="hero">
         <div class="hero-box">
             <small>Deep Learning • Automação • Próxima Era</small>
@@ -605,7 +598,6 @@
             </div>
         </div>
     </section>
-
     <section id="sobre" class="reveal">
         <p class="section-tag">// 01 . INTRODUÇÃO</p>
         <h2>O Que é Inteligência Artificial?</h2>
@@ -629,7 +621,6 @@
             </div>
         </div>
     </section>
-
     <section id="simulador" class="reveal">
         <p class="section-tag">// 02 . INTERATIVIDADE</p>
         <h2 style="text-align: center;">Laboratório de Inferência Neural</h2>
@@ -667,7 +658,6 @@
             </div>
         </div>
     </section>
-
     <section id="beneficios" class="reveal">
         <p class="section-tag">// 04 . APLICAÇÕES</p>
         <h2>Setores em Transformação Crítica</h2>
@@ -691,23 +681,36 @@
             </div>
         </div>
     </section>
-
     <section id="faq" class="reveal">
         <p class="section-tag">// 05 . FAQ</p>
         <h2>Perguntas Frequentes</h2>
-        <p class="lead">Esclarecimentos diretos sobre mitos e verdades da automação.</p>
+        <p class="lead">Esclarecimentos diretos sobre mitos, verdades da automação e privacidade.</p>
         
         <details>
             <summary>A inteligência artificial irá substituir empregos?</summary>
             <p style="color: var(--muted); margin-top:15px;">A IA redesenha o mercado. Funções repetitivas tendem à automação completa, abrindo espaço para novas engenharias de comando e supervisores de modelos de dados.</p>
         </details>
-
         <details>
             <summary>Como funcionam os modelos generativos?</summary>
             <p style="color: var(--muted); margin-top:15px;">Eles operam à base de predição estatística pura em larga escala, calculando qual o próximo caractere ou elemento visual mais provável de aparecer baseado no contexto de entrada.</p>
         </details>
+        <details>
+            <summary>Como a segurança dos dados é treated nos sistemas de IA?</summary>
+            <p style="color: var(--muted); margin-top:15px;">Modelos de nível empresarial utilizam criptografia avançada de ponta a ponta e pipelines isolados (anonymized data rooms) para garantir conformidade com regras globais de privacidade, como a LGPD e o GDPR.</p>
+        </details>
+        <details>
+            <summary>Qual a diferença básica entre Inteligência Artificial e Automação simples?</summary>
+            <p style="color: var(--muted); margin-top:15px;">A automação simples segue regras fixas predefinidas (Se A acontecer, faça B). A IA analisa dados dinâmicos, identifica novos caminhos por conta própria e toma decisões preditivas sem precisar de regras manuais para cada cenário.</p>
+        </details>
     </section>
-
+    <section class="divine-section reveal">
+        <p class="section-tag">// 06 . HORIZONTE DA CRIAÇÃO</p>
+        <h2>A Origem de Toda a Ordem</h2>
+        <p class="lead">Seja através das leis matemáticas da física, da engenharia biológica da natureza ou da fé, a busca humana pela inteligência reflete nosso vislumbre de um Arquiteto Supremo.</p>
+        <div class="divine-image-container">
+            <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=800" alt="Nebulosa Cósmica simbolizando a Criação Divina e o Olho do Universo">
+        </div>
+    </section>
     <button id="topBtn" title="Voltar ao topo">↑</button>
     
     <footer>
@@ -720,9 +723,8 @@
         </div>
         <p style="margin-top:40px; font-size:0.85rem;">© 2026 - Futuro Exponencial Integrado.</p>
     </footer>
-
     <script>
-        /* 1. SISTEMA DE PARTÍCULAS EM CANVAS (GRÁFICOS) */
+        /* 1. SISTEMA DE PARTÍCULAS EM CANVAS */
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -740,7 +742,9 @@
                 this.y = Math.random() * canvas.height;
                 this.size = Math.random() * 1.5 + 0.5;
                 this.speedX = Math.random() * 0.2 - 0.1;
-                this.speedY = Math.random() * -0.3 - 0.1; // Sobem devagar
+                this.speedY = Math.random() * -0.3 - 0.1;
+                // Cores modificadas para Azul e Verde Neon no Canvas
+                this.color = Math.random() > 0.5 ? 'rgba(0, 255, 102, 0.2)' : 'rgba(0, 229, 255, 0.2)';
             }
             update() {
                 this.x += this.speedX;
@@ -751,7 +755,7 @@
                 }
             }
             draw() {
-                ctx.fillStyle = 'rgba(0, 255, 163, 0.15)';
+                ctx.fillStyle = this.color;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -777,7 +781,7 @@
         animateParticles();
 
 
-        /* 2. EFEITO TYPEWRITER (ESCRITA DINÂMICA) */
+        /* 2. EFEITO TYPEWRITER */
         class TypeWriter {
             constructor(txtElement, words, wait = 3000) {
                 this.txtElement = txtElement;
@@ -842,7 +846,7 @@
         });
 
 
-        /* 4. ANIMAÇÕES NO SCROLL (INTERSECTION OBSERVER) */
+        /* 4. ANIMAÇÕES NO SCROLL */
         const revealElements = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -855,7 +859,7 @@
         revealElements.forEach(el => observer.observe(el));
 
 
-        /* 5. MENU INTERATIVO (INDICADOR DESLIZANTE & CLIQUE) */
+        /* 5. MENU INTERATIVO (SCROLL SPY, INDICATOR & PROGRESS) */
         const indicator = document.getElementById('indicator');
         const links = document.querySelectorAll('.nav-link');
         const menu = document.getElementById('nav-menu');
@@ -916,13 +920,21 @@
         });
 
 
-        /* SCROLL SPY & BARRA DE PROGRESSO SUPERIOR */
+        /* SCROLL PROGRESS, SPY & TOP BUTTON */
         const sections = document.querySelectorAll('section[id]');
-        window.addEventListener("scroll",()=>{
+        const topBtn = document.getElementById("topBtn");
+
+        window.addEventListener("scroll", () => {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             let scrolled = (winScroll / height) * 100;
             document.getElementById("progress").style.width = scrolled + "%";
+
+            if (winScroll > 300) {
+                topBtn.style.display = "block";
+            } else {
+                topBtn.style.display = "none";
+            }
 
             let scrollY = window.pageYOffset;
             sections.forEach(current => {
@@ -944,18 +956,10 @@
                     }
                 }
             });
-
-            // Botão Topo
-            if(window.scrollY > 500){
-                topBtn.style.display="block";
-            }else{
-                topBtn.style.display="none";
-            }
         });
 
-        const topBtn = document.getElementById("topBtn");
-        topBtn.addEventListener("click",()=>{
-            window.scrollTo({ top:0, behavior:"smooth" });
+        topBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>
